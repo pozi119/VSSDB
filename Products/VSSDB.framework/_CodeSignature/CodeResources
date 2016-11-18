@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Headers/VSSDB.h</key>
+		<data>
+		7itqZmqgHQe76XbQ9yA5osgfM9g=
+		</data>
 		<key>Info.plist</key>
 		<data>
 		jpw0UiJvBuNdX7nG7U1VMhwpDVM=
@@ -15,6 +19,17 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Headers/VSSDB.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			7itqZmqgHQe76XbQ9yA5osgfM9g=
+			</data>
+			<key>hash2</key>
+			<data>
+			486bBGdTn2qSkrhvV+69aTeq1WLOT3vLhFiAP35Iuj4=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>

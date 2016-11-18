@@ -37,7 +37,7 @@
 		3E16A6A51DDEC27000BAF51C /* libsnappy-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E16A6941DDEC27000BAF51C /* libsnappy-ios.a */; };
 		3E16A6A61DDEC27000BAF51C /* libssdb-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E16A6951DDEC27000BAF51C /* libssdb-ios.a */; };
 		3E16A6A71DDEC27000BAF51C /* libutil-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E16A6961DDEC27000BAF51C /* libutil-ios.a */; };
-		3E16A6A81DDEC27000BAF51C /* VSSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E16A6971DDEC27000BAF51C /* VSSDB.h */; };
+		3E16A6A81DDEC27000BAF51C /* VSSDB.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E16A6971DDEC27000BAF51C /* VSSDB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3E16A6A91DDEC27000BAF51C /* VSSDB.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E16A6981DDEC27000BAF51C /* VSSDB.mm */; };
 		3E16A6B11DDEC2B200BAF51C /* VSSDBHashmapTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E16A6AA1DDEC2B200BAF51C /* VSSDBHashmapTests.mm */; };
 		3E16A6B21DDEC2B200BAF51C /* VSSDBKeyValueTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3E16A6AB1DDEC2B200BAF51C /* VSSDBKeyValueTests.mm */; };
@@ -213,6 +213,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E16A6A81DDEC27000BAF51C /* VSSDB.h in Headers */,
 				3E16A69A1DDEC27000BAF51C /* const.h in Headers */,
 				3E16A69C1DDEC27000BAF51C /* options.h in Headers */,
 				3E16A6A01DDEC27000BAF51C /* config.h in Headers */,
@@ -220,7 +221,6 @@
 				3E16A6A21DDEC27000BAF51C /* strings.h in Headers */,
 				3E16A6A11DDEC27000BAF51C /* sorted_set.h in Headers */,
 				3E16A6A31DDEC27000BAF51C /* thread.h in Headers */,
-				3E16A6A81DDEC27000BAF51C /* VSSDB.h in Headers */,
 				3E16A69F1DDEC27000BAF51C /* bytes.h in Headers */,
 				3E16A69B1DDEC27000BAF51C /* iterator.h in Headers */,
 				3E16A69D1DDEC27000BAF51C /* ssdb.h in Headers */,
@@ -601,6 +601,7 @@
 				3E16A6BC1DDECB4000BAF51C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
