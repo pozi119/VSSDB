@@ -1,0 +1,6 @@
+framework module VSSDB {
+  umbrella header "VSSDB.h"
+
+  export *
+  module * { export * }
+}
