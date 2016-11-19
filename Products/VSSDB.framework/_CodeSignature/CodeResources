@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/VSSDB.h</key>
 		<data>
-		7itqZmqgHQe76XbQ9yA5osgfM9g=
+		z5IeKFj7viKjSC1wcevSvFyhfzw=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -23,11 +23,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7itqZmqgHQe76XbQ9yA5osgfM9g=
+			z5IeKFj7viKjSC1wcevSvFyhfzw=
 			</data>
 			<key>hash2</key>
 			<data>
-			486bBGdTn2qSkrhvV+69aTeq1WLOT3vLhFiAP35Iuj4=
+			hl+esH/q2PDVpKsXridFaA51cY3VZtdDDIyY7xpxn1Q=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
