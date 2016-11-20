@@ -82,7 +82,7 @@
         BOOL isDir = NO;
         BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:dir isDirectory:&isDir];
         if (!isDir || !exist ) {
-            [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+            [[NSFileManager defaultManager] createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:nil];
         }
         _dbPath = [dir stringByAppendingPathComponent:dbPath];
     }

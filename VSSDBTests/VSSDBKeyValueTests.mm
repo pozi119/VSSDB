@@ -20,7 +20,7 @@
     NSString *val = @"6";
     NSData *data = [val dataUsingEncoding:NSUTF8StringEncoding];
     BOOL ret = [self.vssdb set:key data:data];
-    BOOL ret1 = [self.vssdb expire:key ttl:5];
+    BOOL ret1 = 1;//[self.vssdb expire:key ttl:5];
     NSLog(@"ret = %@,%@", @(ret),@(ret1));
 }
 

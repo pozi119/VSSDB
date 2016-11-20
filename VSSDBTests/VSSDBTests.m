@@ -13,7 +13,7 @@
 
 - (void)setUp {
     [super setUp];
-    self.vssdb = [[VSSDB alloc] init];
+    self.vssdb = [[VSSDB alloc] initWithName:@"test"];
     [self.vssdb open];
 }
 
