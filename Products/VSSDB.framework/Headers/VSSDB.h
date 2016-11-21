@@ -36,7 +36,7 @@ FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
 @interface VSDSortedSetItem : NSObject
 @property (nonatomic, copy  , nonnull) NSString *name;
 @property (nonatomic, copy  , nonnull) NSString *key;
-@property (nonatomic, copy  , nonnull) NSString *score;
+@property (nonatomic, copy  , nonnull) NSData   *score;
 @end
 
 @interface VSDListItem : NSObject
@@ -310,7 +310,7 @@ FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
  *  @param score 权重
  *  @return 是否设置成功
  */
-- (BOOL)zset:(nonnull NSString *)name key:(nonnull NSString *)key score:(nonnull NSString *)score;
+- (BOOL)zset:(nonnull NSString *)name key:(nonnull NSString *)key score:(nonnull NSData *)score;
 
 /**
  *  删除有序集合中指定的 key
@@ -342,7 +342,7 @@ FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
  *  @param key   指定的key
  *  @return score,获取到的权重
  */
-- (nullable NSString *)zget:(nonnull NSString *)name key:(nonnull NSString *)key;
+- (nullable NSData *)zget:(nonnull NSString *)name key:(nonnull NSString *)key;
 
 /**
  *  顺序获取指定 key 在 有序集合 中的排序位置(排名), 排名从 0 开始
@@ -441,14 +441,14 @@ FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
  *  @param name 队列名
  *  @return 获取到的元素
  */
-- (nullable NSString *)qfront:(nonnull NSString *)name;
+- (nullable NSData *)qfront:(nonnull NSString *)name;
 
 /**
  *  从队列尾部弹出一个元素.
  *  @param name 队列名
  *  @return 获取到的元素
  */
-- (nullable NSString *)qback:(nonnull NSString *)name;
+- (nullable NSData *)qback:(nonnull NSString *)name;
 
 /**
  *  往队列的首部添加一个元素

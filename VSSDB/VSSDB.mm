@@ -374,7 +374,7 @@
         VSDHashmapItem *item = [VSDHashmapItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.val =[NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -393,7 +393,7 @@
         VSDHashmapItem *item = [VSDHashmapItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.val =[NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     
@@ -403,10 +403,10 @@
 
 #pragma mark Sorted-Set
 @implementation VSSDB (SortedSet)
-- (BOOL)zset:(NSString *)name key:(NSString *)key score:(NSString *)score{
+- (BOOL)zset:(NSString *)name key:(NSString *)key score:(NSData *)score{
     std::string n(name.UTF8String);
     std::string k(key.UTF8String);
-    std::string s(score.UTF8String);
+    std::string s((const char*)score.bytes, score.length);
     int ret = _ssdb->zset(n, k, s);
     return ret >= 0;
 }
@@ -431,14 +431,14 @@
     return _ssdb->zsize(n);
 }
 
-- (NSString *)zget:(NSString *)name key:(NSString *)key{
+- (NSData *)zget:(NSString *)name key:(NSString *)key{
     std::string n(name.UTF8String);
     std::string k(key.UTF8String);
     std::string v;
-    NSString *score = nil;
+    NSData *score = nil;
     int ret = _ssdb->zget(n, k, &v);
     if(ret == 1){
-        score = [NSString stringWithUTF8String:v.c_str()];
+        score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
     }
     return score;
 }
@@ -466,7 +466,7 @@
         VSDSortedSetItem *item = [VSDSortedSetItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score =[NSString stringWithUTF8String:v.c_str()];
+        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -483,7 +483,7 @@
         VSDSortedSetItem *item = [VSDSortedSetItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score =[NSString stringWithUTF8String:v.c_str()];
+        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -503,7 +503,7 @@
         VSDSortedSetItem *item = [VSDSortedSetItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score =[NSString stringWithUTF8String:v.c_str()];
+        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -523,7 +523,7 @@
         VSDSortedSetItem *item = [VSDSortedSetItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score =[NSString stringWithUTF8String:v.c_str()];
+        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -581,24 +581,24 @@
     return _ssdb->qsize(n);
 }
 
-- (NSString *)qfront:(NSString *)name{
+- (NSData *)qfront:(NSString *)name{
     std::string n(name.UTF8String);
     std::string i;
-    NSString *item = nil;
+    NSData *item = nil;
     int ret = _ssdb->qfront(n, &i);
     if(ret == 1){
-        item = [NSString stringWithUTF8String:i.c_str()];
+        item = [NSData dataWithBytes:(const void *)i.data() length:(NSUInteger)i.size()];
     }
     return item;
 }
 
-- (NSString *)qback:(NSString *)name{
+- (NSData *)qback:(NSString *)name{
     std::string n(name.UTF8String);
     std::string i;
-    NSString *item = nil;
+    NSData *item = nil;
     int ret = _ssdb->qback(n, &i);
     if(ret == 1){
-        item = [NSString stringWithUTF8String:i.c_str()];
+        item = [NSData dataWithBytes:(const void *)i.data() length:(NSUInteger)i.size()];
     }
     return item;
 }
@@ -698,13 +698,13 @@
     return list;
 }
 
-- (NSString *)qget:(NSString *)name index:(int64_t)index{
+- (NSData *)qget:(NSString *)name index:(int64_t)index{
     std::string n(name.UTF8String);
     std::string v;
-    NSString *data = nil;
+    NSData *data = nil;
     int ret = _ssdb->qget(n, index, &v);
     if(ret == 1){
-        data = [NSString stringWithUTF8String:v.c_str()];
+        data = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
     }
     return data;
 }
