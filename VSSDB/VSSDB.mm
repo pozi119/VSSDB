@@ -9,19 +9,13 @@
 #import "VSSDB.h"
 #import "ttl.h"
 
-@implementation VSDOptions
+@implementation VSSDBOptions
 @end
 
-@implementation VSDKeyValItem
+@implementation VSSDBKeyValue
 @end
 
-@implementation VSDHashmapItem
-@end
-
-@implementation VSDSortedSetItem
-@end
-
-@implementation VSDListItem
+@implementation VSSDBCollectionItem
 @end
 
 @interface VSSDB ()
@@ -51,7 +45,7 @@
     return [self openWithOptions:nil];
 }
 
--(BOOL)openWithOptions:(VSDOptions *)options{
+-(BOOL)openWithOptions:(VSSDBOptions *)options{
     Options opt = [[self class] ssdbOptions:options];
     std::string path(self.dbPath.UTF8String);
     _ssdb = SSDB::open(opt, path);
@@ -88,7 +82,7 @@
     }
 }
 
-+ (Options)ssdbOptions:(VSDOptions *)inOptions{
++ (Options)ssdbOptions:(VSSDBOptions *)inOptions{
     Options opt;
     if (inOptions.cache_size > 0) {
         opt.cache_size = inOptions.cache_size;
@@ -267,7 +261,7 @@
     while (it->next()) {
         std::string k = it->key;
         std::string v = it->val;
-        VSDKeyValItem *item = [VSDKeyValItem new];
+        VSSDBKeyValue *item = [VSSDBKeyValue new];
         item.key = [NSString stringWithUTF8String:k.c_str()];
         item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
@@ -284,7 +278,7 @@
     while (it->next()) {
         std::string k = it->key;
         std::string v = it->val;
-        VSDKeyValItem *item = [VSDKeyValItem new];
+        VSSDBKeyValue *item = [VSSDBKeyValue new];
         item.key = [NSString stringWithUTF8String:k.c_str()];
         item.val =[NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
@@ -371,7 +365,7 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->val;
-        VSDHashmapItem *item = [VSDHashmapItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
         item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
@@ -390,13 +384,12 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->val;
-        VSDHashmapItem *item = [VSDHashmapItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
         item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
-    
     return array;
 }
 @end
@@ -463,10 +456,10 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->score;
-        VSDSortedSetItem *item = [VSDSortedSetItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -480,10 +473,10 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->score;
-        VSDSortedSetItem *item = [VSDSortedSetItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -500,10 +493,10 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->score;
-        VSDSortedSetItem *item = [VSDSortedSetItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;
@@ -520,10 +513,10 @@
         std::string n = it->name;
         std::string k = it->key;
         std::string v = it->score;
-        VSDSortedSetItem *item = [VSDSortedSetItem new];
+        VSSDBCollectionItem *item = [VSSDBCollectionItem new];
         item.name = [NSString stringWithUTF8String:n.c_str()];
         item.key = [NSString stringWithUTF8String:k.c_str()];
-        item.score = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
+        item.val = [NSData dataWithBytes:(const void *)v.data() length:(NSUInteger)v.size()];
         [array addObject:item];
     }
     return array;

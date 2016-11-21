@@ -11,35 +11,24 @@
 FOUNDATION_EXPORT double VSSDBVersionNumber;
 FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
 
-@interface VSDOptions : NSObject
+@interface VSSDBOptions : NSObject
 @property (nonatomic, assign) size_t    cache_size;
 @property (nonatomic, assign) size_t    max_open_files;
 @property (nonatomic, assign) size_t    write_buffer_size;
 @property (nonatomic, assign) size_t    block_size;
 @property (nonatomic, assign) int       compaction_speed;
-@property (nonatomic, copy  , nullable) NSString *compression;
 @property (nonatomic, assign) BOOL      binlog;
 @property (nonatomic, assign) size_t    binlog_capacity;
+@property (nonatomic, copy  , nullable) NSString *compression;
 @end
 
-@interface VSDKeyValItem : NSObject
+@interface VSSDBKeyValue : NSObject
 @property (nonatomic, copy  , nonnull) NSString *key;
 @property (nonatomic, strong, nonnull) NSData   *val;
 @end
 
-@interface VSDHashmapItem : NSObject
+@interface VSSDBCollectionItem : NSObject
 @property (nonatomic, copy  , nonnull) NSString *name;
-@property (nonatomic, copy  , nonnull) NSString *key;
-@property (nonatomic, strong, nonnull) NSData   *val;
-@end
-
-@interface VSDSortedSetItem : NSObject
-@property (nonatomic, copy  , nonnull) NSString *name;
-@property (nonatomic, copy  , nonnull) NSString *key;
-@property (nonatomic, copy  , nonnull) NSData   *score;
-@end
-
-@interface VSDListItem : NSObject
 @property (nonatomic, copy  , nonnull) NSString *key;
 @property (nonatomic, strong, nonnull) NSData   *val;
 @end
@@ -68,7 +57,7 @@ FOUNDATION_EXPORT const unsigned char VSSDBVersionString[];
  *  @param options ssdb数据库参数
  *  @return 数据库是否打开成功
  */
-- (BOOL)openWithOptions:(nullable VSDOptions *)options;
+- (BOOL)openWithOptions:(nullable VSSDBOptions *)options;
 
 /**
  *  关闭数据库
